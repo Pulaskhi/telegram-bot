@@ -1,0 +1,6 @@
+import './componentes/logo.js'
+import './componentes/header.js'
+import './componentes/menu.js'
+import './componentes/filas.js'
+import './componentes/formulario.js'
+import './componentes/main.js'
