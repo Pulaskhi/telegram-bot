@@ -1,14 +1,16 @@
 class Logo extends HTMLElement {
-  constructor() {
+  constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
   }
-  async connectedCallback() {
+
+  async connectedCallback () {
     await this.render()
   }
-  render(){
+
+  render () {
     this.shadow.innerHTML =
-    /*html*/`
+    /* html */`
     <style>
       *{
           box-sizing: border-box;
@@ -25,6 +27,5 @@ class Logo extends HTMLElement {
     </section>
     `
   }
-
 }
-customElements.define('logo-component', Logo);
+customElements.define('logo-component', Logo)

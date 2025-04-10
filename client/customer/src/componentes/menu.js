@@ -1,15 +1,16 @@
 class Menu extends HTMLElement {
-  constructor() {
+  constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
   }
-  async connectedCallback() {
+
+  async connectedCallback () {
     await this.render()
   }
 
-  render(){
+  render () {
     this.shadow.innerHTML =
-    /*html*/`
+    /* html */`
     <style>
       *{
         box-sizing: border-box;
@@ -28,6 +29,5 @@ class Menu extends HTMLElement {
     </section>
     `
   }
-
 }
-customElements.define('menu-component', Menu);
+customElements.define('menu-component', Menu)

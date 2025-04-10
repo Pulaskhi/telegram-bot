@@ -1,14 +1,16 @@
 class Formulario extends HTMLElement {
-  constructor() {
+  constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
   }
-  async connectedCallback() {
+
+  async connectedCallback () {
     await this.render()
   }
-  render(){
+
+  render () {
     this.shadow.innerHTML =
-    /*html*/`
+    /* html */`
     <style>
       *{
         box-sizing: border-box;
@@ -102,6 +104,5 @@ class Formulario extends HTMLElement {
     </section>
     `
   }
-
 }
-customElements.define('formulario-component', Formulario);
+customElements.define('formulario-component', Formulario)

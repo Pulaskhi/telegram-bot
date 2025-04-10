@@ -1,16 +1,16 @@
 class Filas extends HTMLElement {
-  constructor() {
-    super();
-    this.shadow = this.attachShadow({ mode: 'open' });
-    this.data = [];
+  constructor () {
+    super()
+    this.shadow = this.attachShadow({ mode: 'open' })
+    this.data = []
   }
 
-  async connectedCallback() {
-    await this.loadData();
-    await this.render();
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
   }
 
-  loadData() {
+  loadData () {
     this.data = [
       {
         name: 'Carlos',
@@ -36,11 +36,11 @@ class Filas extends HTMLElement {
         createdAt: '2024-03-10',
         updatedAt: '2024-04-01'
       }
-    ];
+    ]
   }
 
-  render() {
-    this.shadow.innerHTML =  
+  render () {
+    this.shadow.innerHTML =
     /* html */`
       <style>
         * {
@@ -143,57 +143,53 @@ class Filas extends HTMLElement {
           </div>
         </div>
       </section>
-    `;
+    `
 
-  const listaDatos = this.shadow.querySelector('.lista-datos');
+    const listaDatos = this.shadow.querySelector('.lista-datos')
 
-  this.data.forEach((x) => {
-    const card = document.createElement('div');
-    card.classList.add('card');
+    this.data.forEach((x) => {
+      const card = document.createElement('div')
+      card.classList.add('card')
 
-    
-    const cardHeader = document.createElement('div');
-    cardHeader.classList.add('card-header');
+      const cardHeader = document.createElement('div')
+      cardHeader.classList.add('card-header')
 
-    const cardButtons = document.createElement('div');
-    cardButtons.classList.add('card-buttons');
-    
-    const editButton = document.createElement('button');
-    editButton.innerHTML = `
+      const cardButtons = document.createElement('div')
+      cardButtons.classList.add('card-buttons')
+
+      const editButton = document.createElement('button')
+      editButton.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil</title><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
-    `;
-    cardButtons.appendChild(editButton);
+    `
+      cardButtons.appendChild(editButton)
 
-    
-    const deleteButton = document.createElement('button');
-    deleteButton.innerHTML = `
+      const deleteButton = document.createElement('button')
+      deleteButton.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20">
         <path fill="black" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
       </svg>
-    `;
-    cardButtons.appendChild(deleteButton);
+    `
+      cardButtons.appendChild(deleteButton)
 
-    cardHeader.appendChild(cardButtons);
-    card.appendChild(cardHeader);
+      cardHeader.appendChild(cardButtons)
+      card.appendChild(cardHeader)
 
-    
-    const cardInfo = document.createElement('div');
-    cardInfo.classList.add('card-info');
+      const cardInfo = document.createElement('div')
+      cardInfo.classList.add('card-info')
 
-    const ul = document.createElement('ul');
-    cardInfo.appendChild(ul);
+      const ul = document.createElement('ul')
+      cardInfo.appendChild(ul)
 
+      Object.keys(x).forEach(key => {
+        const itemText = document.createElement('li')
+        itemText.textContent = `${key}: ${x[key]}`
+        ul.appendChild(itemText)
+      })
 
-    Object.keys(x).forEach(key => {
-      const itemText = document.createElement('li');
-      itemText.textContent = `${key}: ${x[key]}`;
-      ul.appendChild(itemText);
-    });
-
-    card.appendChild(cardInfo);
-    listaDatos.appendChild(card);
-  });
+      card.appendChild(cardInfo)
+      listaDatos.appendChild(card)
+    })
   }
 }
 
-customElements.define('filas-component', Filas);
+customElements.define('filas-component', Filas)
